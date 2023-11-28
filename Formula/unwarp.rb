@@ -3,7 +3,7 @@ class Unwarp < Formula
     homepage "https://github.com/loozhengyuan/unwarp"
     url "https://github.com/loozhengyuan/unwarp.git",
         # tag: "v0.1.0"
-        revision: "a096ae302b45a3201eaa05fa0ada9b4cfd76b116"
+        revision: "34578f16bdb1f7ace675770314f6de81b4908a7c"
     head "https://github.com/loozhengyuan/unwarp.git",
         branch: "main"
     version "0.1.0"

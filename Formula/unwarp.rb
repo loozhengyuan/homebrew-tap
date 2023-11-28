@@ -16,6 +16,7 @@ class Unwarp < Formula
     service do
         run opt_bin/"unwarp"
         keep_alive successful_exit: true
+        environment_variables PATH: std_service_path_env
         log_path var/"log/unwarp.log"
         error_log_path var/"log/unwarp.log"
     end

@@ -8,6 +8,7 @@ class Unwarp < Formula
         branch: "main"
     version "0.1.0"
     license "MIT"
+    revision 1
 
     def install
         bin.install "src/unwarp.sh" => "unwarp"

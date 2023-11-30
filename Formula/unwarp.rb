@@ -10,7 +10,7 @@ class Unwarp < Formula
        branch: 'main'
   version '0.1.0'
   license 'MIT'
-  revision 2
+  revision 3
 
   def install
     bin.install 'src/unwarp.sh' => 'unwarp'
@@ -20,8 +20,8 @@ class Unwarp < Formula
     run "#{opt_bin}/unwarp"
     keep_alive always: true
     environment_variables PATH: std_service_path_env
-    log_path "#{var}log/unwarp.log"
-    error_log_path "#{var}log/unwarp.log"
+    log_path "#{var}/log/unwarp.log"
+    error_log_path "#{var}/log/unwarp.log"
   end
 
   test do

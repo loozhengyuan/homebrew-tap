@@ -1,5 +1,7 @@
 # `homebrew-tap`
 
+[![ci](https://github.com/loozhengyuan/homebrew-tap/actions/workflows/ci.yml/badge.svg)](https://github.com/loozhengyuan/homebrew-tap/actions/workflows/ci.yml)
+
 Homebrew Tap for [@loozhengyuan](https://github.com/loozhengyuan)
 
 ## Usage

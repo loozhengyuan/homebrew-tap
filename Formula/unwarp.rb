@@ -4,7 +4,7 @@ class Unwarp < Formula
   url "https://github.com/loozhengyuan/unwarp.git",
     tag: "v0.1.0"
   license "MIT"
-  revision 4
+  revision 5
   head "https://github.com/loozhengyuan/unwarp.git",
     branch: "main"
 
@@ -15,7 +15,9 @@ class Unwarp < Formula
   service do
     run "#{opt_bin}/unwarp"
     keep_alive always: true
-    environment_variables PATH: std_service_path_env
+    # NOTE: `/usr/local/bin` may not be always be in `std_service_path_env`
+    # depending on the target os and architecture so we explicitly add it.
+    environment_variables PATH: "#{std_service_path_env}:/usr/local/bin"
     log_path "#{var}/log/unwarp.log"
     error_log_path "#{var}/log/unwarp.log"
   end

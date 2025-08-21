@@ -18,7 +18,7 @@ defaults:
 jobs:
   test:
     name: test
-    runs-on: macos-12
+    runs-on: macos-13
     timeout-minutes: 10
 
     steps:

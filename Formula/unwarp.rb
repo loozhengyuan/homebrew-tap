@@ -2,10 +2,9 @@ class Unwarp < Formula
   desc "Disable Cloudflare WARP on macOS"
   homepage "https://github.com/loozhengyuan/unwarp"
   url "https://github.com/loozhengyuan/unwarp.git",
-    tag:      "v0.1.0",
-    revision: "c64c5281677e35a9a94e6cce96efeef4748ecf66"
+    tag:      "v0.2.0",
+    revision: "1e698585c77cb864dd5fc78ea88999bc30f3a5df"
   license "MIT"
-  revision 6
   head "https://github.com/loozhengyuan/unwarp.git",
     branch: "main"
 

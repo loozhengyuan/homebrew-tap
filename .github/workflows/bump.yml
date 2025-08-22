@@ -1,12 +1,6 @@
 name: bump
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
   schedule:
     - cron: "0 10 * * *" # Daily at 18:00hrs SGT
   workflow_dispatch:

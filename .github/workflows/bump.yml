@@ -47,16 +47,15 @@ jobs:
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
 
-      # NOTE: `brew bump` may not return non-zero exit code when encountering
-      # error pushing commits or creating PR. This command is still preferred
-      # because it is easier to use compared to `brew bump-formula-pr`.
-      # https://github.com/Homebrew/brew/issues/20536
-      # NOTE: `GITHUB_TOKEN` is intentionally used even though created PRs does
-      # not trigger GitHub Action workflows and requires manual rebase. Given
-      # that updates are infrequent, the cost of manual rebase is lesser than
-      # rotating tokens.
+      # NOTE: The `brew bump` command is used instead of `brew bump-formula-pr`
+      # and `brew bump-cask-pr` because it handles fetching the latest version
+      # and operates on all formulae/casks within a tap.
       - name: Bump packages
         env:
+          # NOTE: `GITHUB_TOKEN` is intentionally used even though created PRs does
+          # not trigger GitHub Action workflows and requires manual rebase. Given
+          # that updates are infrequent, the cost of manual rebase is lesser than
+          # rotating tokens.
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           brew bump --open-pr --no-fork --tap loozhengyuan/tap

@@ -39,6 +39,11 @@ jobs:
         run: brew install-bundler-gems
 
       # TODO: Figure how to test all formulae by default
+      # TODO: Figure out idiomatic way to test casks
       - name: Run tests
         run: |
           brew test-bot --testing-formulae unwarp
+          brew install --cask kicad
+          brew uninstall --cask kicad
+          brew install --cask kicad@8
+          brew uninstall --cask kicad@8

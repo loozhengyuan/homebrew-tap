@@ -14,17 +14,25 @@ brew tap loozhengyuan/tap
 
 ## Development
 
-For testing _Formulae_ locally, you can run the following command. The `--verbose` and `--debug` flags can optionally be added to display additional debugging information.
+> [!NOTE]
+> All formulae/casks [MUST be installed from a tap](https://github.com/Homebrew/brew/pull/20414) from Homebrew `4.6.4` onwards; using `brew install ./Formula/xxx.rb` will not work.
+
+For local development, it is recommended to create a local version of the tap for testing purposes. By linking the local working tree of the repository, developers will be able to make changes and test acccordingly.
+
+In the directory of your local working tree, run the following commands that creates the `loozhengyuan/tap-dev` tap:
 
 ```shell
-brew install --formula ./Formula/unwarp.rb
+mkdir -p "$(brew --repository)/Library/Taps/loozhengyuan/homebrew-tap-dev"
+ln -sniv "$(pwd)" "$(brew --repository)/Library/Taps/loozhengyuan/homebrew-tap-dev"
 ```
 
-For testing _Formulae_ from a specific branch (e.g. when reviewing PRs), you can either checkout the specific branch and run the above command or use the following one-liner:
+Thereafter, you may install the desired formulae/casks using the `loozhengyuan/tap-dev/${name}` expression:
 
 ```shell
-curl -fsSL --output /tmp/unwarp.rb --proto '=https' --tlsv1.2 <FORMULA_URL> && brew install --formula /tmp/unwarp.rb && rm /tmp/unwarp.rb
+brew install --formula loozhengyuan/tap-dev/unwarp
 ```
+
+_**NOTE**: The `--verbose` and `--debug` flags can optionally be added to display additional debugging information._
 
 ## License
 

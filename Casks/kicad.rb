@@ -9,8 +9,7 @@ cask "kicad" do
   homepage "https://kicad.org/"
 
   livecheck do
-    url :url
-    strategy :github_latest
+    skip "Managed by official Homebrew"
   end
 
   conflicts_with cask: [

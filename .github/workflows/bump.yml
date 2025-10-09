@@ -17,9 +17,6 @@ jobs:
     name: bump
     runs-on: macos-15
     timeout-minutes: 10
-    permissions:
-      contents: write       # Required to push commits
-      pull-requests: write  # Required to create PRs
 
     steps:
       - name: Set up Homebrew
@@ -52,10 +49,11 @@ jobs:
       # and operates on all formulae/casks within a tap.
       - name: Bump packages
         env:
-          # NOTE: `GITHUB_TOKEN` is intentionally used even though created PRs does
-          # not trigger GitHub Action workflows and requires manual rebase. Given
-          # that updates are infrequent, the cost of manual rebase is lesser than
-          # rotating tokens.
-          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # NOTE: Using `GITHUB_TOKEN` also works but PRs created this way
+          # will not trigger CI runs required to validate the changes. As such,
+          # even though using a fine-grained access token requires periodic
+          # token rotation, it is preferred of `GITHUB_TOKEN`.
+          # https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow#triggering-a-workflow-from-a-workflow
+          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
         run: |
           brew bump --open-pr --no-fork --tap loozhengyuan/tap

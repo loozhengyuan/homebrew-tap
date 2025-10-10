@@ -35,6 +35,13 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: brew install-bundler-gems
 
+      # NOTE: Formulae/Casks with the same name can conflict when running `brew bump`
+      # so we manually untap them as a workaround.
+      - name: Untap official formulae/casks
+        run: |
+          brew untap homebrew/core
+          brew untap homebrew/cask
+
       # NOTE: The commit email address should be the canonical no-reply email address
       # used by the `github-actions[bot]` bot user.
       # https://api.github.com/users/github-actions%5Bbot%5D

@@ -1,6 +1,6 @@
 cask "kicad" do
-  version "9.0.5"
-  sha256 "b3a51347f54e5e4140a56a7ff8eada65d76ff5958af01ff035125f0af201002e"
+  version "9.0.7"
+  sha256 "449525e4ac119dc79a36b9a5aba5e6a269ecdc1905b94dce9eaf44ea45fd84c2"
 
   url "https://github.com/KiCad/kicad-source-mirror/releases/download/#{version}/kicad-unified-universal-#{version}.dmg",
       verified: "github.com/KiCad/kicad-source-mirror/"
@@ -14,8 +14,8 @@ cask "kicad" do
   end
 
   conflicts_with cask: [
-    "kicad@9",
     "kicad@8",
+    "kicad@9",
   ]
   depends_on macos: ">= :big_sur"
 

@@ -42,6 +42,7 @@ jobs:
       # TODO: Figure out idiomatic way to test casks
       - name: Run tests
         run: |
+          mkdir -p home
           brew test-bot --testing-formulae unwarp
           brew install --cask kicad
           brew uninstall --cask kicad

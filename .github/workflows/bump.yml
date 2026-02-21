@@ -63,4 +63,5 @@ jobs:
           # https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow#triggering-a-workflow-from-a-workflow
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
         run: |
+          mkdir -p home
           brew bump --open-pr --no-fork --tap loozhengyuan/tap

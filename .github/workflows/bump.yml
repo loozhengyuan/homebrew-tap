@@ -63,4 +63,7 @@ jobs:
           # https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow#triggering-a-workflow-from-a-workflow
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.HOMEBREW_GITHUB_API_TOKEN }}
         run: |
+          # Workaround for `No such file or directory @ rb_check_realpath_internal` on macOS-15.
+          # The `HOME` directory is set to `${{ github.workspace }}/home` but it doesn't exist.
+          mkdir -p home
           brew bump --open-pr --no-fork --tap loozhengyuan/tap

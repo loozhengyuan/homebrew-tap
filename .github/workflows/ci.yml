@@ -42,6 +42,9 @@ jobs:
       # TODO: Figure out idiomatic way to test casks
       - name: Run tests
         run: |
+          # Workaround for `No such file or directory @ rb_check_realpath_internal` on macOS-15.
+          # The `HOME` directory is set to `${{ github.workspace }}/home` but it doesn't exist.
+          mkdir -p home
           brew test-bot --testing-formulae unwarp
           brew install --cask kicad
           brew uninstall --cask kicad

@@ -17,12 +17,12 @@ brew tap loozhengyuan/tap
 > [!NOTE]
 > All formulae/casks [MUST be installed from a tap](https://github.com/Homebrew/brew/pull/20414) from Homebrew `4.6.4` onwards; using `brew install ./Formula/xxx.rb` will not work.
 
-For local development, it is recommended to create a local version of the tap for testing purposes. By linking the local working tree of the repository, developers will be able to make changes and test acccordingly.
+For local development, it is recommended to create a local version of the tap for testing purposes. By linking the local working tree of the repository, developers will be able to make changes and test accordingly.
 
 In the directory of your local working tree, run the following commands that creates the `loozhengyuan/tap-dev` tap:
 
 ```shell
-mkdir -p "$(brew --repository)/Library/Taps/loozhengyuan/homebrew-tap-dev"
+mkdir -p "$(brew --repository)/Library/Taps/loozhengyuan"
 ln -sniv "$(pwd)" "$(brew --repository)/Library/Taps/loozhengyuan/homebrew-tap-dev"
 ```
 
@@ -33,6 +33,13 @@ brew install --formula loozhengyuan/tap-dev/unwarp
 ```
 
 _**NOTE**: The `--verbose` and `--debug` flags can optionally be added to display additional debugging information._
+
+To lint and audit changes without installing them, run the following commands:
+
+```shell
+brew style loozhengyuan/tap-dev
+brew audit --strict loozhengyuan/tap-dev/unwarp
+```
 
 ## License
 

@@ -1,6 +1,6 @@
-cask "kicad" do
-  version "10.0.5"
-  sha256 "9399e18609c6b94e708b375bb88455b94c55653ec427b81023d71ae42217d681"
+cask "kicad@9" do
+  version "9.0.8"
+  sha256 "6f08ff072eae1e2d0323c6cc3fbdf69708e4fb9a4f41672d84bc5acfe75c843d"
 
   url "https://github.com/KiCad/kicad-source-mirror/releases/download/#{version}/kicad-unified-universal-#{version}.dmg"
   name "KiCad"
@@ -9,14 +9,15 @@ cask "kicad" do
 
   livecheck do
     url :url
-    strategy :github_latest
+    regex(/^v?(9(?:\.\d+)+)$/i)
+    strategy :github_releases
   end
 
   conflicts_with cask: [
+    "kicad",
     "kicad@8",
-    "kicad@9",
   ]
-  depends_on macos: :monterey
+  depends_on :macos
 
   suite "KiCad"
   binary "#{appdir}/KiCad/KiCad.app/Contents/MacOS/dxf2idf"

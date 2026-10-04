@@ -42,6 +42,13 @@ jobs:
           brew untap homebrew/core
           brew untap homebrew/cask
 
+      # NOTE: Non-official taps must be explicitly trusted since Homebrew 6.0.0
+      # and `brew bump --tap` loads all formulae/casks within the tap.
+      # https://docs.brew.sh/Tap-Trust
+      - name: Trust tap
+        run: |
+          brew trust loozhengyuan/tap
+
       # NOTE: The commit email address should be the canonical no-reply email address
       # used by the `github-actions[bot]` bot user.
       # https://api.github.com/users/github-actions%5Bbot%5D
